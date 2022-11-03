@@ -15,6 +15,11 @@ func (w Wizard) Defend() string {
     return "Expelliarmus" 
 }
 
+func (w Wizard) Attack() string { 
+    return "Attackhunt" 
+}
+
+
 // Wizard Receiver Function (method) - A Wizard has the unique ability to cast a Forget() spell
 func (w Wizard) Forget() string {
     return "Obliviate"
@@ -28,10 +33,14 @@ func (b Barbarian) Defend() string {
     return "Dodge" 
 }
 
+func (b Barbarian) Attack() string { 
+    return "Hunt" 
+}
+
 // make an interface
 type Player interface {
     Defend() string
-    // Attack() string
+    Attack() string
 }
 
 
@@ -51,6 +60,8 @@ func main() {
     // knowing all the types in the slice have the same capabilities (in this case, Defend())
     for _, a := range players {
         fmt.Println(reflect.TypeOf(a).Name(), "defends:", a.Defend())
+		fmt.Println(reflect.TypeOf(a).Name(), "attacks:", a.Attack())
+
     }
 
     fmt.Println("Wizard makes us all forget:", gandalf.Forget())
